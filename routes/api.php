@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -24,4 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(ProductController::class)->group(function(){
     Route::get('products','index');
+    Route::get('products/show/{id}','show');
+});
+
+Route::controller(CategoryProduct::class)->group(function(){
+    Route::get('categories/{id}/product','index');
 });
